@@ -21,7 +21,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", res)
+	http.HandleFunc("/food", res)
 	http.ListenAndServe(":8000", nil)
 }
 
