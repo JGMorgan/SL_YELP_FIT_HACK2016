@@ -16,7 +16,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"/go-yelp/yelp"
+	"github.com/JustinBeckwith/go-yelp/yelp"
 )
 
 func main() {
