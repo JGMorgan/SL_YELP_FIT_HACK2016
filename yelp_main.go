@@ -14,21 +14,21 @@ import (
 	"fmt"
 	"github.com/JustinBeckwith/go-yelp/yelp"
 	//	"go-yelp/yelp"
-	"io"
+	//"io"
 	"io/ioutil"
-	"net/http"
+	//"net/http"
 	//	"os"
 )
 
 func main() {
-	http.HandleFunc("/food", res)
-	http.ListenAndServe(":8000", nil)
+
+	res(term, location)
 }
 
-func res(w http.ResponseWriter, r *http.Request) {
+func res(term string, location string) {
 
 	// get the keys either from config file
-	options, err := getOptions(w)
+	options, err := getOptions()
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -37,22 +37,20 @@ func res(w http.ResponseWriter, r *http.Request) {
 	client := yelp.New(options, nil)
 
 	// make a simple query
-	term := r.URL.Query().Get("term")
-	location := r.URL.Query().Get("location")
-	results, err := client.DoSimpleSearch(term, location)
+	//term := r.URL.Query().Get("term")
+	//location := r.URL.Query().Get("location")
+	results, err := client.DoSimpleSearch("", "miami")
 	if err != nil {
 		fmt.Println(err)
 	}
 
 	// print the results
-	io.WriteString(w, fmt.Sprintf("<div>Found a total of %v results for \"%v\" in \"%v\".</div>", results.Total, term, location))
-	io.WriteString(w, "<div>-----------------------------</div>")
 	for i := 0; i < len(results.Businesses); i++ {
-		io.WriteString(w, fmt.Sprintf("<div>%v, %v</div>", results.Businesses[i].Name, results.Businesses[i].Rating))
+		fmt.Println(results.Businesses[i].Name, results.Businesses[i].Rating)
 	}
 }
 
-func getOptions(w http.ResponseWriter) (options *yelp.AuthOptions, err error) {
+func getOptions() (options *yelp.AuthOptions, err error) {
 
 	var o *yelp.AuthOptions
 
