@@ -1,0 +1,3 @@
+[submodule "go-yelp"]
+	path = go-yelp
+	url = git@github.com:JustinBeckwith/go-yelp.git
