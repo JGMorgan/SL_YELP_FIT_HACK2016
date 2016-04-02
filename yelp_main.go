@@ -6,7 +6,7 @@ Token	8X47ZbEsoipD-Kht2q4PuBc1OrEN2TMN
 Token Secret	JYnVfoZKI2b-5b7r1ux6X39a8-4
 */
 
-package SL_YELP_FIT_HACK2016
+package main
 
 import (
 	"encoding/json"
@@ -16,7 +16,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"go-yelp/yelp"
+	"github.com/JustinBeckwith/go-yelp/yelp"
 )
 
 func main() {
