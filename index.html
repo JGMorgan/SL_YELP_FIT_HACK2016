@@ -1,0 +1,41 @@
+<html ng-app="yelp_chat">
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+</head>
+<body ng-controller="chatController" width="50%" align="left">
+    <p>
+        Username: <input type="text" placeholder="Username" ng-model="usr">
+    </p>
+    <ul>
+        <li ng-repeat="m in messages track by $index">
+            {{m}}<br>
+        </li>
+    </ul>
+    <input type="text" placeholder="type here" ng-model="message">
+    <button type="button" class="btn btn-primary-outline" ng-click="send()">Submit</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+    <script>
+        var app = angular.module("yelp_chat", []);
+        app.controller("chatController", ["$scope", function($scope) {
+            $scope.messages = [];
+            $scope.currUsr = "";
+            var sock = new WebSocket("ws://localhost:8000/sock");
+            sock.onmessage = function(m){
+                $scope.$apply(function(){
+                    var res = m.data.split(": ");
+                    $scope.messages.push(m.data);
+                    $scope.currUsr=res[0] + ": ";
+                })
+            }
+            $scope.send = function(){
+                sock.send($scope.usr+": "+$scope.message);//+$scope.message);
+                $scope.message = "";
+            }
+            $scope.mySplit = function(string, nb) {
+                $scope.array = string.split(': ');
+                return $scope.result = $scope.array[nb];
+            }
+        }])
+    </script>
+</body>
+</html>
