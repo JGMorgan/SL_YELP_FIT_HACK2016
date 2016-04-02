@@ -12,12 +12,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"go-yelp/yelp"
+	"github.com/JustinBeckwith/go-yelp/yelp"
+	//	"go-yelp/yelp"
 	"io"
 	"io/ioutil"
 	"net/http"
-	"os"
-	"github.com/JustinBeckwith/go-yelp/yelp"
+	//	"os"
 )
 
 func main() {
