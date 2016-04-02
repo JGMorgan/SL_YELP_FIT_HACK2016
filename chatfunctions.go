@@ -13,7 +13,8 @@ func yelp() []byte {
 }
 
 func swag() []byte {
-	return ([]byte("SWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\n"))
+	return ([]byte("SWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\n
+		SWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\nSWAG\n"))
 }
 
 func flipcoin() []byte {
