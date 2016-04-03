@@ -6,27 +6,23 @@ Token	8X47ZbEsoipD-Kht2q4PuBc1OrEN2TMN
 Token Secret	JYnVfoZKI2b-5b7r1ux6X39a8-4
 */
 
-package main
+package yelpmain
 
 import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/JustinBeckwith/go-yelp/yelp"
-	//	"go-yelp/yelp"
-	//"io"
 	"io/ioutil"
-	//"net/http"
-	//	"os"
+	"github.com/JustinBeckwith/go-yelp/yelp"
 )
 
-func main() {
-
-	res(term, location)
+func init(tags string, location string) {
+	//hard coded for testing
+	food("cross fit", "miami")
 }
 
-func res(term string, location string) {
-
+func food(tags string, locations string){
+	var restaurants[] string
 	// get the keys either from config file
 	options, err := getOptions()
 	if err != nil {
@@ -36,17 +32,16 @@ func res(term string, location string) {
 	// create a new yelp client with the auth keys
 	client := yelp.New(options, nil)
 
-	// make a simple query
-	//term := r.URL.Query().Get("term")
-	//location := r.URL.Query().Get("location")
-	results, err := client.DoSimpleSearch("", "miami")
+	term := tags
+	location := locations
+	results, err := client.DoSimpleSearch(term, location)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	// print the results
 	for i := 0; i < len(results.Businesses); i++ {
 		fmt.Println(results.Businesses[i].Name, results.Businesses[i].Rating)
+		restaurants=append(restaurants,results.Businesses[i].Name);
 	}
 }
 

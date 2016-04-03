@@ -28,7 +28,19 @@
                 })
             }
             $scope.send = function(){
-                sock.send($scope.usr+": "+$scope.message);//+$scope.message);
+                sock.send($scope.usr+": "+$scope.message);
+                $scope.message = "";
+            }
+            $scope.food = function(){
+                sock.send("food");
+                $scope.message = "";
+            }
+            $scope.activity = function(){
+                sock.send("activity");
+                $scope.message = "";
+            }
+            $scope.travel = function(){
+                sock.send("travel");
                 $scope.message = "";
             }
             $scope.mySplit = function(string, nb) {
