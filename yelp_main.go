@@ -6,7 +6,7 @@ Token	8X47ZbEsoipD-Kht2q4PuBc1OrEN2TMN
 Token Secret	JYnVfoZKI2b-5b7r1ux6X39a8-4
 */
 
-package yelpmain
+package libs
 
 import (
 	"encoding/json"
@@ -16,10 +16,6 @@ import (
 	"github.com/JustinBeckwith/go-yelp/yelp"
 )
 
-func init(tags string, location string) {
-	//hard coded for testing
-	food("cross fit", "miami")
-}
 
 func food(tags string, locations string){
 	var restaurants[] string

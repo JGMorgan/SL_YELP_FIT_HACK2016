@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
-	"yelpmain"
+	"libs"
 )
 
 var connections map[*websocket.Conn]bool
@@ -50,8 +50,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			conn.Close()
 			return
 		}
-		s := strings.Split(string(msg), ", ")
-		init(s[0], s[1])
+		s := string.Split(string(msg), ", ")
+		libs.food(s[0], s[1])
 		sendAll(msg)
 	}
 }
