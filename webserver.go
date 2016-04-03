@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
-	"libs"
+	"github.com/leonliang33/SL_YELP_FIT_HACK2016"
 )
 
 var connections map[*websocket.Conn]bool
